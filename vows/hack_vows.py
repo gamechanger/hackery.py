@@ -6,7 +6,6 @@ import os
 import sys
 sys.path.append(os.path.abspath('{0}/../../'.format(__file__)))
 
-print os.path.abspath('{0}/../../'.format(__file__))
 from hackery import Hack
 from hackery import VersionHack
 from hackery import Backend
