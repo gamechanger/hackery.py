@@ -27,7 +27,7 @@ class ConstraintContext(Vows.Context):
 
         class WhenKeyExists(TrueContext):
             def topic(self, constraint):
-                return constraint({'~va': 2})
+                return constraint({'android': 2})
 
         class WhenKeyDoesNotExist(FalseContext):
             def topic(self, constraint):
@@ -39,7 +39,7 @@ class ConstraintContext(Vows.Context):
 
         class WhenKeyEquals(TrueContext):
             def topic(self, constraint):
-                return constraint({'~va': 2})
+                return constraint({'android': 2})
 
         class WhenKeyDoesNotEqual(FalseContext):
             def topic(self, constraint):
@@ -51,15 +51,15 @@ class ConstraintContext(Vows.Context):
 
         class WhenKeyLessThan(TrueContext):
             def topic(self, constraint):
-                return constraint({'~va': 1})
+                return constraint({'android': 1})
 
         class WhenKeyEquals(FalseContext):
             def topic(self, constraint):
-                return constraint({'~va': 2})
+                return constraint({'android': 2})
 
         class WhenKeyGreaterThan(FalseContext):
             def topic(self, constraint):
-                return constraint({'~va': 3})
+                return constraint({'android': 3})
 
     class GreaterThanConstraint(Vows.Context):
         def topic(self):
@@ -67,15 +67,15 @@ class ConstraintContext(Vows.Context):
 
         class WhenKeyLessThan(FalseContext):
             def topic(self, constraint):
-                return constraint({'~va': 1})
+                return constraint({'android': 1})
 
         class WhenKeyEquals(FalseContext):
             def topic(self, constraint):
-                return constraint({'~va': 2})
+                return constraint({'android': 2})
 
         class WhenKeyGreaterThan(TrueContext):
             def topic(self, constraint):
-                return constraint({'~va': 3})
+                return constraint({'android': 3})
 
     class LessThanOrEqualConstraint(Vows.Context):
         def topic(self):
@@ -83,15 +83,15 @@ class ConstraintContext(Vows.Context):
 
         class WhenKeyLessThan(TrueContext):
             def topic(self, constraint):
-                return constraint({'~va': 1})
+                return constraint({'android': 1})
 
         class WhenKeyEquals(TrueContext):
             def topic(self, constraint):
-                return constraint({'~va': 2})
+                return constraint({'android': 2})
 
         class WhenKeyGreaterThan(FalseContext):
             def topic(self, constraint):
-                return constraint({'~va': 3})
+                return constraint({'android': 3})
 
     class GreaterThanOrEqualConstraint(Vows.Context):
         def topic(self):
@@ -99,12 +99,12 @@ class ConstraintContext(Vows.Context):
 
         class WhenKeyLessThan(FalseContext):
             def topic(self, constraint):
-                return constraint({'~va': 1})
+                return constraint({'android': 1})
 
         class WhenKeyEquals(TrueContext):
             def topic(self, constraint):
-                return constraint({'~va': 2})
+                return constraint({'android': 2})
 
         class WhenKeyGreaterThan(TrueContext):
             def topic(self, constraint):
-                return constraint({'~va': 3})
+                return constraint({'android': 3})
