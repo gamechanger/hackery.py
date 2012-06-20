@@ -2,10 +2,12 @@ __author__ = 'Kiril Savino'
 
 from backend import PrintingBackend
 
+default_backend = PrintingBackend()
+
 class Hack(object):
-    backend = PrintingBackend()
     def __init__(self, name):
         self.name = name
+        self.backend = default_backend
         self.backend.call(self.name)
 
     def __enter__(self):
