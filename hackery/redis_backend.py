@@ -8,7 +8,7 @@ class RedisBackend(Backend):
         self.client = client
 
     def record_hack(self, name):
-        super(RedisBackend, self).call(name)
+        super(RedisBackend, self).record_hack(name)
         self.client.sadd('hacks', name)
 
 
