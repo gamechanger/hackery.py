@@ -14,5 +14,7 @@ class RedisBackend(Backend):
 
     def count(self, event):
         super(RedisBackend, self).count(event)
-        self.client.hincrby('hack_events', event, 1)
-        self.client.hset('hack_times', event, time.time())
+        pipe = self.client.pipeline(transaction=False)
+        pipe.hincrby('hack_events', event, 1)
+        pipe.hset('hack_times', event, time.time())
+        pipe.execute()
