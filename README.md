@@ -12,7 +12,7 @@ After:
 with VersionHack('ios-questionable-field', 'ios == 1.4', incoming_data) as hack:
     if hack:
         if 'questionable_field' not in incoming_data:
-            hack.count('field-present')
+            hack.count('field-absent')
             incoming_data['questionable_field'] = 0
 ```
 
