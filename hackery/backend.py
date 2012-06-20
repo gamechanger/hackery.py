@@ -33,5 +33,5 @@ class PrintingBackend(Backend):
         print "{0} called".format(name)
 
     def count(self, event):
-        super(PrintingBackend, self).count(self, event)
+        super(PrintingBackend, self).count(event)
         print "{0} happened {1} times so far".format(event, self._count_of(event))
