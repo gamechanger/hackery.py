@@ -9,7 +9,7 @@ if 'questionable_field' not in incoming_data:
 
 After:
 ```python
-with VersionHack('ios-questionable-field', 'ios == 1.4', incoming_data) as hack:
+with VersionHack('ios-questionable-field', 'ios == 1.4', incoming_data_version) as hack:
     if hack:
         if 'questionable_field' not in incoming_data:
             hack.count('field-absent')

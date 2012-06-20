@@ -5,8 +5,6 @@ from hack import Hack
 
 
 class Constraint(object):
-    version_names = {'android': '~va', 'ios': '~v'}
-
     constraint_regex=r'(\w+)\s*(?:(<|>|==|<=|>=)\s*([\-\.1-9]+))?'
 
     operators = {'<': operator.lt,
@@ -15,8 +13,8 @@ class Constraint(object):
                  '<=': operator.le,
                  '>=': operator.ge}
 
-    def __init__(self, device, op, target):
-        self.version_name = self.version_names[device]
+    def __init__(self, version_name, op, target):
+        self.version_name = version_name
         self.op = self.operators[op] if op else None
         self.target = parse_version(target) if target else None
 
@@ -25,8 +23,8 @@ class Constraint(object):
         return [cls(*match) for match in
                 re.findall(cls.constraint_regex, constraint_string)]
 
-    def __call__(self, obj):
-        version = obj.get(self.version_name)
+    def __call__(self, version_obj):
+        version = version_obj.get(self.version_name)
         version_passes = True
         if version and self.op:
             version_passes = self.op(parse_version(str(version)),
@@ -35,10 +33,13 @@ class Constraint(object):
 
 class VersionHack(Hack):
 
-    def __init__(self, name, constraints, obj, *args, **kwargs):
+    def __init__(self, name, constraints, version, *args, **kwargs):
+        """
+        version should look like {<device>: <version>}
+        """
         super(VersionHack, self).__init__(name, *args, **kwargs)
-        self.obj = obj
+        self.version = version
         self.constraints = Constraint.constraints_from_string(constraints)
 
     def _should_fire(self):
-        return any(constraint(self.obj) for constraint in self.constraints)
+        return any(constraint(self.version) for constraint in self.constraints)

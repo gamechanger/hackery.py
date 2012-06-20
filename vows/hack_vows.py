@@ -94,11 +94,11 @@ class HackeryContext(Vows.Context):
 
     class VersionHackContext(HackContext):
         def topic(self):
-            return lambda: VersionHack('test_hack', 'android==2', {'~va': 2}, backend=TestBackend())
+            return lambda: VersionHack('test_hack', 'android==2', {'android': 2}, backend=TestBackend())
 
         class VersionHackConstrainFailureContext(Vows.Context):
             def topic(self):
-                hack = VersionHack('test_hack', 'android==2', {'~va': 3}, backend=TestBackend())
+                hack = VersionHack('test_hack', 'android==2', {'android': 3}, backend=TestBackend())
                 with hack as h:
                     return h
 
