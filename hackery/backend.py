@@ -6,16 +6,22 @@ from collections import defaultdict
 class Backend(object):
     def __init__(self):
         self.counts = defaultdict(lambda:0)
-        self.times = dict()
+        self.last_times = dict()
         self.hacks = set()
 
-    def call(self, name):
+    def record_hack(self, name):
+        """
+        Register the existence of a hack
+        """
         self.hacks.add(name)
 
     def count(self, event):
+        """
+        Record the occurence of an event
+        """
         event = str(event)
         self.counts[event] += 1
-        self.times[event] = time.time()
+        self.last_times[event] = time.time()
 
 
     def _count_of(self, event):

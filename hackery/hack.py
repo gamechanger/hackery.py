@@ -8,7 +8,7 @@ class Hack(object):
     def __init__(self, name, backend=None):
         self.name = name
         self.backend = backend or default_backend
-        self.backend.call(self.name)
+        self.backend.record_hack(self.name)
 
     def __enter__(self):
         if self._should_fire():
@@ -20,6 +20,9 @@ class Hack(object):
         pass
 
     def _should_fire(self):
+        """
+        Have we met the conditions for this hack to be fired?
+        """
         return True
 
     def count(self, event):
