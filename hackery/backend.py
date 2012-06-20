@@ -1,10 +1,12 @@
 __author__ = 'Kiril Savino'
 
+import time
 from collections import defaultdict
 
 class Backend(object):
     def __init__(self):
         self.counts = defaultdict(lambda:0)
+        self.times = dict()
         self.hacks = set()
 
     def call(self, name):
@@ -13,6 +15,8 @@ class Backend(object):
     def count(self, event):
         event = str(event)
         self.counts[event] += 1
+        self.times[event] = time.time()
+
 
     def _count_of(self, event):
         return self.counts.get(event) or 0

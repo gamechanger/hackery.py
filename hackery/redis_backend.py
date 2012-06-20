@@ -1,3 +1,4 @@
+import time
 from backend import Backend
 
 class RedisBackend(Backend):
@@ -14,3 +15,4 @@ class RedisBackend(Backend):
     def count(self, event):
         super(RedisBackend, self).count(event)
         self.client.hincrby('hack_events', event, 1)
+        self.client.hset('hack_times', event, time.time())
