@@ -4,6 +4,10 @@ from backend import PrintingBackend
 
 default_backend = PrintingBackend()
 
+def set_default_backend(backend):
+    global default_backend
+    default_backend = backend
+
 class Hack(object):
     def __init__(self, name, backend=None):
         self.name = name
