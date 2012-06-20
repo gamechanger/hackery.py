@@ -7,7 +7,7 @@ def read(fname):
 
 setuptools.setup(
     name="Hackery",
-    version="0.0.2",
+    version="0.0.3",
     author="Kiril Savino",
     author_email="kiril@gamechanger.io",
     description="hack labeling and tracking library",
