@@ -108,3 +108,15 @@ class ConstraintContext(Vows.Context):
         class WhenKeyGreaterThan(TrueContext):
             def topic(self, constraint):
                 return constraint({'android': 3})
+
+    class AlphaLessThanConstraint(Vows.Context):
+        def topic(self):
+            return Constraint('android', '<', 'a2')
+
+        class WhenKeyNumeric(FalseContext):
+            def topic(self, constraint):
+                return constraint({'android': 2})
+
+        class WhenKeySmallerAlpha(TrueContext):
+            def topic(self, constraint):
+                return constraint({'android': 'a1'})

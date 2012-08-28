@@ -5,7 +5,7 @@ from hack import Hack
 
 
 class Constraint(object):
-    constraint_regex=r'(\w+)\s*(?:(<|>|==|<=|>=)\s*([\-\.1-9]+))?'
+    constraint_regex=r'(\w+)\s*(?:(<|>|==|<=|>=)\s*([\-\.0-9a-z]+))?'
 
     operators = {'<': operator.lt,
                  '>': operator.gt,
