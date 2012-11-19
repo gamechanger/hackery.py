@@ -1,4 +1,3 @@
-__author__ = 'Kiril Savino'
 
 from backend import PrintingBackend
 
@@ -9,10 +8,11 @@ def set_default_backend(backend):
     default_backend = backend
 
 class Hack(object):
-    def __init__(self, name, backend=None):
+    def __init__(self, name, backend=None, condition=None):
         self.name = name
         self.backend = backend or default_backend
         self.backend.record_hack(self.name)
+        self.condition = condition
 
     def __enter__(self):
         if self._should_fire():
@@ -27,6 +27,8 @@ class Hack(object):
         """
         Have we met the conditions for this hack to be fired?
         """
+        if self.condition and callable(self.condition):
+            return self.condition()
         return True
 
     def count(self, event):
