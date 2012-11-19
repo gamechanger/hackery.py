@@ -27,7 +27,7 @@ class Hack(object):
         """
         Have we met the conditions for this hack to be fired?
         """
-        if self.condition and callable(self.condition):
+        if callable(self.condition):
             return self.condition()
         return True
 
