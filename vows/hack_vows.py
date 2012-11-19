@@ -105,3 +105,33 @@ class HackeryContext(Vows.Context):
 
             def should_not_fire(self, topic):
                 expect(topic).to_be_false()
+
+    class ConditionalHack(Vows.Context):
+        def topic(self):
+            class Foo(object):
+                def __init__(self):
+                    self.value = True
+                    self.hack = Hack('foo_conditional', condition=lambda: self.value)
+            return Foo
+
+        def should_have_value_true(self, Foo):
+            expect(Foo().value).to_be_true()
+
+        class FiringConditionalHack(Vows.Context):
+            def topic(self, Foo):
+                with Foo().hack as h:
+                    return h
+
+            def should_fire(self, topic):
+                expect(topic).to_be_true()
+
+        class NonFiringConditionalHack(Vows.Context):
+            def topic(self, Foo):
+                foo = Foo()
+                foo.value = False
+                with foo.hack as h:
+                    return h
+
+            def shouldnt_fire(self, topic):
+                expect(topic).to_be_false()
+
