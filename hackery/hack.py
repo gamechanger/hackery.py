@@ -31,5 +31,8 @@ class Hack(object):
             return self.condition()
         return True
 
-    def count(self, event):
-        self.backend.count('{0}.{1}'.format(self.name, event))
+    def count(self, event=None):
+        if event is not None:
+            self.backend.count('{0}.{1}'.format(self.name, event))
+        else:
+            self.backend.count(self.name)
